@@ -34,7 +34,8 @@ jobs:
           context: .
           file: Dockerfile
           push: true
-          tags: hanguyen07/it4409-sample:staging
+          tags: hanguyen07/it4409-sample:staging #tai khoan dockerhub la hanguyen07
+          
 
   deploy:
     name: Deploy to Server
