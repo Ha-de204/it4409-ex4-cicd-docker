@@ -26,16 +26,15 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      # 4. Build Docker image và push lên Docker Hub
+      # 4. Build Docker image và push lên Docker Hub, lưu ý trường tags: có dạng dockerhub-username/image-name:tag
+      # Ví dụ nếu tên tài khoản dockerhub của bạn là A => đặt là A/it4409-sample:staging chẳng hạn
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
           context: .
           file: Dockerfile
           push: true
-          tags: |
-            bsignbkc/express-sample-project:staging
-            bsignbkc/express-sample-project:latest
+          tags: lamdb/it4409-sample:staging
 
   deploy:
     name: Deploy to Server
@@ -43,7 +42,7 @@ jobs:
     needs: build-and-push
 
     steps:
-      # 5. SSH vào server và deploy container
+      # 5. SSH vào server và deploy container, phần này không chạy được do không có server cụ thể
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v1.0.3
         with:
