@@ -1,5 +1,7 @@
 name: CI/CD and Docker
 
+# change to push
+
 on:
   push:
     branches:
@@ -34,7 +36,7 @@ jobs:
           context: .
           file: Dockerfile
           push: true
-          tags: hanguyen07/it4409-sample:staging #tai khoan dockerhub la hanguyen07
+          tags: hanguyen07/it4409-sample:staging 
           
 
   deploy:
